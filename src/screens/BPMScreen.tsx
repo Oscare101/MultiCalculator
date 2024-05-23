@@ -1,4 +1,5 @@
 import {
+  Dimensions,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -7,7 +8,8 @@ import {
   View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
-import {Timespan} from 'react-native/Libraries/Utilities/IPerformanceLogger';
+
+const width = Dimensions.get('screen').width;
 
 export default function BPMScreen() {
   const [times, setTimes] = useState<number[]>([]);
@@ -32,15 +34,26 @@ export default function BPMScreen() {
   }
 
   useEffect(CalculateBPM, [times]);
+
+  function HeartRateBlock() {
+    return (
+      <View style={styles.heartRateBlock}>
+        <Text style={styles.cardTitle}>{GetBPM()}</Text>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
+      <HeartRateBlock />
       <Pressable
         onPressIn={() => setTimes([...times, Date.now()].slice(-5))}
-        style={({pressed}) => ({backgroundColor: pressed ? 'red' : 'green'})}>
+        style={({pressed}) => [
+          styles.press,
+          {backgroundColor: pressed ? 'red' : '#96DC7E'},
+        ]}>
         <Text>Press</Text>
       </Pressable>
-      <Text>{frequency}</Text>
-      <Text>{GetBPM()}</Text>
     </SafeAreaView>
   );
 }
@@ -50,7 +63,29 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: 'column',
     alignItems: 'center',
-    justifyContent: 'flex-start',
-    backgroundColor: '#374951',
+    justifyContent: 'space-around',
+    backgroundColor: '#1D2122',
+  },
+
+  press: {
+    width: width * 0.4,
+    aspectRatio: 1,
+    borderRadius: width * 0.4,
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+
+  heartRateBlock: {
+    backgroundColor: '#F58965',
+    width: width * 0.4,
+    aspectRatio: 1.5,
+    borderRadius: width * 0.05,
+    borderCurve: 'circular',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  cardTitle: {
+    fontSize: width * 0.04,
+    color: '#010101',
   },
 });
