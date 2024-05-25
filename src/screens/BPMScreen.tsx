@@ -1,5 +1,6 @@
 import {
   Dimensions,
+  FlatList,
   Pressable,
   SafeAreaView,
   StyleSheet,
@@ -38,14 +39,35 @@ export default function BPMScreen() {
   function HeartRateBlock() {
     return (
       <View style={styles.heartRateBlock}>
-        <Text style={styles.cardTitle}>{GetBPM()}</Text>
+        <Text style={styles.cardTitle}>Beats per minute</Text>
+        <Text style={styles.cardValue}>{GetBPM()}</Text>
       </View>
     );
   }
 
+  function FrequencyBlock() {
+    return (
+      <View style={styles.heartRateBlock}>
+        <Text style={styles.cardTitle}>frequency</Text>
+        <Text style={styles.cardValue}>{frequency! / 1000}</Text>
+      </View>
+    );
+  }
+
+  const gridData = [<HeartRateBlock />, <FrequencyBlock />];
+
+  function RenderItem({item}: any) {
+    return item;
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      <HeartRateBlock />
+      <FlatList
+        data={gridData}
+        numColumns={2}
+        style={{gap: width * 0.05}}
+        renderItem={RenderItem}
+      />
       <Pressable
         onPressIn={() => setTimes([...times, Date.now()].slice(-5))}
         style={({pressed}) => [
@@ -87,5 +109,7 @@ const styles = StyleSheet.create({
   cardTitle: {
     fontSize: width * 0.04,
     color: '#010101',
+    // backgroundColor: '#E6815F',
   },
+  cardValue: {fontSize: width * 0.05, color: '#010101'},
 });
