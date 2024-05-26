@@ -1,10 +1,9 @@
 import {SvgXml} from 'react-native-svg';
-// import {IconName} from '../../constants/interfaces';
-import Heart from './Heart';
 import {IconName} from '../../constants/interfaces';
+import Heart from './Heart';
 
 export default function Icon(props: {
-  icon: IconName['value'];
+  name: IconName['value'];
   size: number;
   color: string;
 }) {
@@ -14,5 +13,5 @@ export default function Icon(props: {
     ),
   };
 
-  return icons[props.icon];
+  return icons[props.name];
 }

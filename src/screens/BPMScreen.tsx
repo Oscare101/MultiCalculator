@@ -5,16 +5,20 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  TouchableOpacity,
   View,
 } from 'react-native';
 import React, {useEffect, useState} from 'react';
+import colors from '../constants/colors';
+import HeartRateCard from '../components/bpm/HeartRateCard';
+import FrequencyCard from '../components/bpm/FrequencyCard';
 
 const width = Dimensions.get('screen').width;
 
 export default function BPMScreen() {
   const [times, setTimes] = useState<number[]>([]);
   const [frequency, setFrequency] = useState<number>();
+
+  const theme = 'dark';
 
   function CalculateBPM() {
     if (times.length > 1) {
@@ -30,38 +34,27 @@ export default function BPMScreen() {
     }
   }
 
-  function GetBPM() {
-    return frequency ? Math.floor(60 / (frequency / 1000)) : 0;
-  }
+  // function FrequencyBlock() {
+  //   return (
+  //     <View style={styles.heartRateBlock}>
+  //       <Text style={styles.cardTitle}>frequency</Text>
+  //       <Text style={styles.cardValue}>{frequency! / 1000}</Text>
+  //     </View>
+  //   );
+  // }
 
-  useEffect(CalculateBPM, [times]);
-
-  function HeartRateBlock() {
-    return (
-      <View style={styles.heartRateBlock}>
-        <Text style={styles.cardTitle}>Beats per minute</Text>
-        <Text style={styles.cardValue}>{GetBPM()}</Text>
-      </View>
-    );
-  }
-
-  function FrequencyBlock() {
-    return (
-      <View style={styles.heartRateBlock}>
-        <Text style={styles.cardTitle}>frequency</Text>
-        <Text style={styles.cardValue}>{frequency! / 1000}</Text>
-      </View>
-    );
-  }
-
-  const gridData = [<HeartRateBlock />, <FrequencyBlock />];
+  const gridData = [
+    <HeartRateCard theme={theme} timesArr={times} />,
+    <FrequencyCard theme={theme} timesArr={times} />,
+  ];
 
   function RenderItem({item}: any) {
     return item;
   }
 
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView
+      style={[styles.container, {backgroundColor: colors[theme].bg}]}>
       <FlatList
         data={gridData}
         numColumns={2}
