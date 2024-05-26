@@ -7,21 +7,22 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
+import React, {useState} from 'react';
 import colors from '../constants/colors';
 import HeartRateCard from '../components/bpm/HeartRateCard';
 import FrequencyCard from '../components/bpm/FrequencyCard';
+import ConsistencyCard from '../components/bpm/ConsistencyCard';
 
 const width = Dimensions.get('screen').width;
 
 export default function BPMScreen() {
   const [times, setTimes] = useState<number[]>([]);
-
   const theme = 'dark';
 
   const gridData = [
     <HeartRateCard theme={theme} timesArr={times} />,
     <FrequencyCard theme={theme} timesArr={times} />,
+    <ConsistencyCard theme={theme} timesArr={times} />,
   ];
 
   function RenderItem({item}: any) {
@@ -57,7 +58,6 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
     backgroundColor: '#1D2122',
   },
-
   press: {
     width: width * 0.4,
     aspectRatio: 1,
@@ -65,20 +65,4 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-
-  heartRateBlock: {
-    backgroundColor: '#F58965',
-    width: width * 0.4,
-    aspectRatio: 1.5,
-    borderRadius: width * 0.05,
-    borderCurve: 'circular',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-  cardTitle: {
-    fontSize: width * 0.04,
-    color: '#010101',
-    // backgroundColor: '#E6815F',
-  },
-  cardValue: {fontSize: width * 0.05, color: '#010101'},
 });

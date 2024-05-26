@@ -50,3 +50,30 @@ export function CalculateFrequency(timesArr: number[]) {
   }
   return 0;
 }
+
+export function CalculateConsistency(timesArr: number[]) {
+  if (timesArr.length > 1) {
+    let a: number[] = [];
+    timesArr.forEach((time: number, index: number) => {
+      if (index) {
+        a.push(time - timesArr[index - 1]);
+      }
+    });
+    const milliseconds = Math.floor(
+      a.reduce((i: number, sum: number) => sum + i, 0) / a.length,
+    );
+    let consistencyArr: number[] = [];
+    a.forEach((time: number, index: number) => {
+      consistencyArr.push(Math.abs(milliseconds - time));
+    });
+    const consistency = Math.floor(
+      consistencyArr.reduce((i: number, sum: number) => sum + i, 0) /
+        consistencyArr.length,
+    );
+    const percent = Math.ceil(
+      Math.abs(100 - (consistency * 100) / milliseconds),
+    );
+    return percent + ' %';
+  }
+  return '-';
+}
