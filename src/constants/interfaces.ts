@@ -1,5 +1,5 @@
 export interface IconName {
-  value: 'heart';
+  value: 'heartOutline' | 'timerOutline';
 }
 
 export interface Theme {

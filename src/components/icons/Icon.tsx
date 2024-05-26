@@ -1,6 +1,7 @@
 import {SvgXml} from 'react-native-svg';
 import {IconName} from '../../constants/interfaces';
-import Heart from './Heart';
+import HeartOutline from './HeartOutline';
+import TimerOutline from './TimerOutline';
 
 export default function Icon(props: {
   name: IconName['value'];
@@ -8,8 +9,19 @@ export default function Icon(props: {
   color: string;
 }) {
   const icons: Record<IconName['value'], any> = {
-    heart: (
-      <SvgXml xml={Heart(props.color)} width={props.size} height={props.size} />
+    heartOutline: (
+      <SvgXml
+        xml={HeartOutline(props.color)}
+        width={props.size}
+        height={props.size}
+      />
+    ),
+    timerOutline: (
+      <SvgXml
+        xml={TimerOutline(props.color)}
+        width={props.size}
+        height={props.size}
+      />
     ),
   };
 

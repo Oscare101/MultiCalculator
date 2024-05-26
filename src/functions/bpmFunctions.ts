@@ -9,7 +9,7 @@ export function CalculateBPM(timesArr: number[]) {
     const frequency = Math.floor(
       a.reduce((i: number, sum: number) => sum + i, 0) / a.length,
     );
-    return Math.floor(60 / (frequency / 1000));
+    return Math.floor(60 / (frequency / 1000)) || '<0';
   }
   return 0;
 }

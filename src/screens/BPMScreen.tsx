@@ -16,32 +16,8 @@ const width = Dimensions.get('screen').width;
 
 export default function BPMScreen() {
   const [times, setTimes] = useState<number[]>([]);
-  const [frequency, setFrequency] = useState<number>();
 
   const theme = 'dark';
-
-  function CalculateBPM() {
-    if (times.length > 1) {
-      let a: number[] = [];
-      times.forEach((time: number, index: number) => {
-        if (index) {
-          a.push(time - times[index - 1]);
-        }
-      });
-      setFrequency(
-        Math.floor(a.reduce((i: number, sum: number) => sum + i, 0) / a.length),
-      );
-    }
-  }
-
-  // function FrequencyBlock() {
-  //   return (
-  //     <View style={styles.heartRateBlock}>
-  //       <Text style={styles.cardTitle}>frequency</Text>
-  //       <Text style={styles.cardValue}>{frequency! / 1000}</Text>
-  //     </View>
-  //   );
-  // }
 
   const gridData = [
     <HeartRateCard theme={theme} timesArr={times} />,
