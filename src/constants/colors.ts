@@ -1,5 +1,14 @@
 const colors: any = {
-  light: {bg: '#F6F6F6', main: '', card: ''},
+  light: {
+    bg: '#F6F6F6',
+    main: '#3B3B3B',
+    comment: '#5E5E5E',
+    card: '#FFFFFF',
+    paleCard: '#444346',
+    red: {main: '', bg: '#F5CBBE'},
+    green: {main: '', bg: '#C3EFB3'},
+    blue: {main: '', bg: '#BED3FA'},
+  },
   dark: {
     bg: '#262626',
     main: '#FEFEFE',

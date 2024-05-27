@@ -13,6 +13,7 @@ export default function HeartRateCard(props: {
       value={CalculateBPM(props.timesArr).toString()}
       icon="heartOutline"
       color={colors[props.theme].red.bg}
+      theme={props.theme}
     />
   );
 }

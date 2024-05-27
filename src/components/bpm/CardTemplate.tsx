@@ -1,7 +1,8 @@
 import {Dimensions, StyleSheet, Text, View} from 'react-native';
 import React from 'react';
 import Icon from '../icons/Icon';
-import {IconName} from '../../constants/interfaces';
+import {IconName, Theme} from '../../constants/interfaces';
+import colors from '../../constants/colors';
 
 const width = Dimensions.get('screen').width;
 
@@ -10,14 +11,23 @@ export default function CardTemplate(props: {
   value: string;
   icon: IconName['value'];
   color: string;
+  theme: Theme['value'];
 }) {
   return (
     <View style={[styles.heartRateBlock, {backgroundColor: props.color}]}>
       <View style={styles.rowBetween}>
-        <Text style={styles.cardTitle}>{props.title}</Text>
-        <Icon name={props.icon} color="#000" size={width * 0.13} />
+        <Text style={[styles.cardTitle, {color: colors[props.theme].card}]}>
+          {props.title}
+        </Text>
+        <Icon
+          name={props.icon}
+          color={colors[props.theme].card}
+          size={width * 0.13}
+        />
       </View>
-      <Text style={styles.cardValue}>{props.value}</Text>
+      <Text style={[styles.cardValue, {color: colors[props.theme].card}]}>
+        {props.value}
+      </Text>
     </View>
   );
 }
@@ -41,7 +51,6 @@ const styles = StyleSheet.create({
   },
   cardTitle: {
     fontSize: width * 0.04,
-    color: '#010101',
   },
-  cardValue: {fontSize: width * 0.08, color: '#010101'},
+  cardValue: {fontSize: width * 0.08},
 });
