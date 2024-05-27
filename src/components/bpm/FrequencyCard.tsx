@@ -1,3 +1,4 @@
+import colors from '../../constants/colors';
 import {Theme} from '../../constants/interfaces';
 import {CalculateFrequency} from '../../functions/bpmFunctions';
 import CardTemplate from './CardTemplate';
@@ -11,7 +12,7 @@ export default function FrequencyCard(props: {
       title="Frequency"
       value={CalculateFrequency(props.timesArr).toString()}
       icon="timerOutline"
-      color="#96DC7E"
+      color={colors[props.theme].green.bg}
     />
   );
 }

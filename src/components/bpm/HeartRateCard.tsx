@@ -1,3 +1,4 @@
+import colors from '../../constants/colors';
 import {Theme} from '../../constants/interfaces';
 import {CalculateBPM} from '../../functions/bpmFunctions';
 import CardTemplate from './CardTemplate';
@@ -11,7 +12,7 @@ export default function HeartRateCard(props: {
       title="BPM"
       value={CalculateBPM(props.timesArr).toString()}
       icon="heartOutline"
-      color="#F58965"
+      color={colors[props.theme].red.bg}
     />
   );
 }
