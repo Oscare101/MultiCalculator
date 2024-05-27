@@ -42,9 +42,18 @@ export default function BPMScreen() {
         onPressIn={() => setTimes([...times, Date.now()].slice(-5))}
         style={({pressed}) => [
           styles.press,
-          {backgroundColor: pressed ? 'red' : '#96DC7E'},
+          {
+            backgroundColor: pressed
+              ? colors[theme].paleCard
+              : colors[theme].card,
+          },
         ]}>
-        <Text>Press</Text>
+        <Text style={[styles.pressTitle, {color: colors[theme].main}]}>
+          Press
+        </Text>
+        <Text style={[styles.pressComment, {color: colors[theme].comment}]}>
+          Only last 5 click are counted
+        </Text>
       </Pressable>
     </SafeAreaView>
   );
@@ -59,10 +68,15 @@ const styles = StyleSheet.create({
     backgroundColor: '#1D2122',
   },
   press: {
-    width: width * 0.4,
-    aspectRatio: 1,
-    borderRadius: width * 0.4,
+    width: width * 0.95,
+    aspectRatio: 1.5,
+    borderRadius: width * 0.05,
     alignItems: 'center',
     justifyContent: 'center',
+    marginBottom: width * 0.025,
   },
+  pressTitle: {
+    fontSize: width * 0.1,
+  },
+  pressComment: {fontSize: width * 0.05, fontWeight: '300'},
 });
