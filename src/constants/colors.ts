@@ -14,10 +14,11 @@ const colors: any = {
     main: '#FEFEFE',
     comment: '#97999A',
     card: '#151515',
-    paleCard: '#444346',
+    paleCard: '#37373A',
     red: {main: '', bg: '#F58965'},
     green: {main: '', bg: '#96DC7E'},
     blue: {main: '', bg: '#9AB2E0'},
+    purple: {main: '', bg: '#C298E4'},
   },
 };
 
