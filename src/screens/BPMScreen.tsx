@@ -12,8 +12,10 @@ import HeartRateCard from '../components/bpm/HeartRateCard';
 import FrequencyCard from '../components/bpm/FrequencyCard';
 import ConsistencyCard from '../components/bpm/ConsistencyCard';
 import ResetButton from '../components/bpm/ResetButton';
+import IndicatorsBlock from '../components/bpm/IndicatorsBlock';
 
 const width = Dimensions.get('screen').width;
+const tapsAmount: number = 5;
 
 export default function BPMScreen() {
   const [times, setTimes] = useState<number[]>([]);
@@ -40,13 +42,14 @@ export default function BPMScreen() {
         contentContainerStyle={{gap: width * 0.05}}
         columnWrapperStyle={{gap: width * 0.05}}
       />
+      <IndicatorsBlock theme={theme} timesArr={times} tapsAmount={tapsAmount} />
       <ResetButton
         active={!!times.length}
         theme={theme}
         onClick={() => setTimes([])}
       />
       <Pressable
-        onPressIn={() => setTimes([...times, Date.now()].slice(-5))}
+        onPressIn={() => setTimes([...times, Date.now()].slice(-tapsAmount))}
         style={({pressed}) => [
           styles.press,
           {
