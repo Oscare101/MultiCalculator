@@ -14,7 +14,7 @@ export default function CardTemplate(props: {
   theme: Theme['value'];
 }) {
   return (
-    <View style={[styles.heartRateBlock, {backgroundColor: props.color}]}>
+    <View style={[styles.card, {backgroundColor: props.color}]}>
       <View style={styles.rowBetween}>
         <Text style={[styles.cardTitle, {color: colors[props.theme].card}]}>
           {props.title}
@@ -33,8 +33,8 @@ export default function CardTemplate(props: {
 }
 
 const styles = StyleSheet.create({
-  heartRateBlock: {
-    width: width * 0.4,
+  card: {
+    width: width * 0.45,
     aspectRatio: 1.5,
     borderRadius: width * 0.05,
     padding: width * 0.03,

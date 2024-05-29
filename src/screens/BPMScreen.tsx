@@ -35,8 +35,10 @@ export default function BPMScreen() {
       <FlatList
         data={gridData}
         numColumns={2}
-        style={{gap: width * 0.05}}
+        style={{width: width * 0.95}}
         renderItem={RenderItem}
+        contentContainerStyle={{gap: width * 0.05}}
+        columnWrapperStyle={{gap: width * 0.05}}
       />
       <ResetButton
         active={!!times.length}
@@ -71,6 +73,7 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'space-around',
     backgroundColor: '#1D2122',
+    paddingTop: width * 0.025,
   },
   press: {
     width: width * 0.95,
