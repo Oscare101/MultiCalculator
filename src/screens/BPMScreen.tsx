@@ -5,13 +5,13 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  View,
 } from 'react-native';
 import React, {useState} from 'react';
 import colors from '../constants/colors';
 import HeartRateCard from '../components/bpm/HeartRateCard';
 import FrequencyCard from '../components/bpm/FrequencyCard';
 import ConsistencyCard from '../components/bpm/ConsistencyCard';
+import ResetButton from '../components/bpm/ResetButton';
 
 const width = Dimensions.get('screen').width;
 
@@ -37,6 +37,11 @@ export default function BPMScreen() {
         numColumns={2}
         style={{gap: width * 0.05}}
         renderItem={RenderItem}
+      />
+      <ResetButton
+        active={!!times.length}
+        theme={theme}
+        onClick={() => setTimes([])}
       />
       <Pressable
         onPressIn={() => setTimes([...times, Date.now()].slice(-5))}
