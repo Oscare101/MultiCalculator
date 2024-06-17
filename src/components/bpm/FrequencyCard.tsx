@@ -12,7 +12,7 @@ export default function FrequencyCard(props: {
       title="Frequency"
       value={CalculateFrequency(props.timesArr).toString()}
       icon="timerOutline"
-      color={colors[props.theme].green.bg}
+      colors={colors[props.theme].green.bg}
       theme={props.theme}
     />
   );

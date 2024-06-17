@@ -15,10 +15,10 @@ const colors: any = {
     comment: '#97999A',
     card: '#151515',
     paleCard: '#37373A',
-    red: {main: '', bg1: '#F58965', bg2: ''},
-    green: {main: '', bg1: '#96DC7E', bg2: ''},
-    blue: {main: '', bg1: '#9AB2E0', bg2: ''},
-    purple: {main: '', bg1: '#C298E4', bg2: ''},
+    red: {main: '', bg: ['#E84254', '#E4343F']},
+    green: {main: '', bg: ['#96DC7E', '#7AD45C']},
+    blue: {main: '', bg: ['#9AB2E0', '#7999D7']},
+    purple: {main: '', bg: ['#C89AFF', '#8365D8']},
   },
 };
 

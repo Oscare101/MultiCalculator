@@ -12,7 +12,7 @@ export default function ConsistencyCard(props: {
       title="Consistency"
       value={CalculateConsistency(props.timesArr).toString()}
       icon="timerOutline"
-      color={colors[props.theme].blue.bg}
+      colors={colors[props.theme].blue.bg}
       theme={props.theme}
     />
   );

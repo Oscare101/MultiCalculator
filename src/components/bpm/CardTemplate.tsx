@@ -15,10 +15,7 @@ export default function CardTemplate(props: {
   theme: Theme['value'];
 }) {
   return (
-    // <View style={[styles.card, {backgroundColor: props.color}]}>
-    <LinearGradient
-      colors={['#4c669f', '#3b5998', '#192f6a']}
-      style={styles.card}>
+    <LinearGradient colors={props.colors} style={styles.card}>
       <View style={styles.rowBetween}>
         <Text style={[styles.cardTitle, {color: colors[props.theme].card}]}>
           {props.title}
@@ -33,7 +30,6 @@ export default function CardTemplate(props: {
         {props.value}
       </Text>
     </LinearGradient>
-    // </View>
   );
 }
 
