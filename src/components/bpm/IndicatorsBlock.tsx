@@ -20,7 +20,7 @@ export default function IndicatorsBlock(props: {
             {
               backgroundColor:
                 props.timesArr.length >= props.tapsAmount - index
-                  ? colors[props.theme].green.bg
+                  ? colors[props.theme].green.bg[1]
                   : colors[props.theme].paleCard,
             },
           ]}
