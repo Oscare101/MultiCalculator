@@ -3,6 +3,7 @@ import React from 'react';
 import Icon from '../icons/Icon';
 import {IconName, Theme} from '../../constants/interfaces';
 import colors from '../../constants/colors';
+import LinearGradient from 'react-native-linear-gradient';
 
 const width = Dimensions.get('screen').width;
 
@@ -10,11 +11,14 @@ export default function CardTemplate(props: {
   title: string;
   value: string;
   icon: IconName['value'];
-  color: string;
+  colors: string[];
   theme: Theme['value'];
 }) {
   return (
-    <View style={[styles.card, {backgroundColor: props.color}]}>
+    // <View style={[styles.card, {backgroundColor: props.color}]}>
+    <LinearGradient
+      colors={['#4c669f', '#3b5998', '#192f6a']}
+      style={styles.card}>
       <View style={styles.rowBetween}>
         <Text style={[styles.cardTitle, {color: colors[props.theme].card}]}>
           {props.title}
@@ -28,7 +32,8 @@ export default function CardTemplate(props: {
       <Text style={[styles.cardValue, {color: colors[props.theme].card}]}>
         {props.value}
       </Text>
-    </View>
+    </LinearGradient>
+    // </View>
   );
 }
 
